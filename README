@@ -1,0 +1,24 @@
+# CS 4760 Assignment 5: Resource Management
+
+## Overview
+This project simulates resource management in an operating system. It detects and resolves deadlocks using a deadlock detection and recovery strategy.
+
+## Files
+- `Makefile`: Builds the project.
+- `oss.c`: Main simulator program.
+- `user_proc.c`: Simulated user process.
+- `resource.c` and `resource.h`: Resource management module.
+- `common.c` and `common.h`: Shared utility functions.
+
+## Build Instructions
+Run `make` to build the project.
+
+## Run Instructions
+- Start the simulator: `./oss [-h] [-n proc] [-s simul] [-i intervalInMsToLaunchChildren] [-f logfile]`
+- Terminate gracefully by sending `SIGINT`.
+
+## Deadlock Policy
+Processes are terminated in FIFO order to resolve deadlocks.
+
+## Output
+Logs are written to both the screen and a file specified by the `-f` option.
