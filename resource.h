@@ -14,10 +14,13 @@ typedef struct {
     int available;
 } ResourceDescriptor;
 
+extern ResourceDescriptor resources[MAX_RESOURCES]; // Add this line
+
 void initialize_resources();
 bool request_resource(int process_id, int resource_id);
 void release_resource(int process_id, int resource_id);
 bool detect_and_resolve_deadlock();
 void release_all_resources(int process_id);
+void process_requests(); // Ensure process_requests is declared
 
 #endif // RESOURCE_H
