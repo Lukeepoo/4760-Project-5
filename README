@@ -1,24 +1,93 @@
-# CS 4760 Assignment 5: Resource Management
+Operating System Simulation
+This project simulates a basic operating system with resource management, deadlock detection, and resolution mechanisms. The system increments a simulated clock and handles resource requests and allocations from processes.
 
-## Overview
-This project simulates resource management in an operating system. It detects and resolves deadlocks using a deadlock detection and recovery strategy.
 
-## Files
-- `Makefile`: Builds the project.
-- `oss.c`: Main simulator program.
-- `user_proc.c`: Simulated user process.
-- `resource.c` and `resource.h`: Resource management module.
-- `common.c` and `common.h`: Shared utility functions.
+How to Compile and Run
 
-## Build Instructions
-Run `make` to build the project.
+Compilation
+Ensure you have a GCC compiler installed on your system.
+Run the following command to compile the program using the provided Makefile:
+make
 
-## Run Instructions
-- Start the simulator: `./oss [-h] [-n proc] [-s simul] [-i intervalInMsToLaunchChildren] [-f logfile]`
-- Terminate gracefully by sending `SIGINT`.
+Running the Program
 
-## Deadlock Policy
-Processes are terminated in FIFO order to resolve deadlocks.
+After compiling, execute the oss program:
+./oss
 
-## Output
-Logs are written to both the screen and a file specified by the `-f` option.
+Optional arguments can be provided to customize the simulation:
+
+-t [sim_duration]: Total simulation time (default: 10.0 seconds).
+-n [max_processes]: Maximum number of processes (default: 18).
+-i [log_interval]: Logging interval in seconds (default: 1.0).
+-l [log_file]: Log file name (default: output.log).
+
+Example:
+
+./oss -t 20.0 -n 10 -i 2.0 -l my_log.txt
+Key Features
+Simulated Clock:
+
+The program uses a shared memory clock that increments by 1 millisecond during each loop iteration.
+Resource Management:
+
+Processes request and release resources dynamically.
+Resources are allocated based on availability.
+Deadlock Detection and Resolution:
+
+Periodically checks for deadlock conditions.
+Resolves deadlocks by releasing resources held by deadlocked processes.
+Progress Monitoring:
+
+Tracks progress cycles (no_progress_cycles).
+Terminates the simulation if no progress is made for a specified number of cycles.
+Logging:
+
+All actions and events are logged to the specified file (output.log by default).
+Program Structure
+
+
+Files
+
+oss.c:
+
+Contains the main simulation loop.
+Manages shared memory and orchestrates resource allocation and logging.
+resource.c:
+
+Handles resource requests and releases.
+Implements the deadlock detection and resolution logic.
+
+common.c:
+
+Provides utility functions for shared memory and clock management.
+
+resource.h:
+
+Defines resource management structures and function prototypes.
+
+common.h:
+
+Contains shared variables and utility function prototypes.
+
+Makefile:
+
+Automates the build process.
+
+
+Simulation Output
+
+Console:
+
+Provides real-time debugging information, including the simulated time, resource allocation, and progress cycles.
+
+Log File:
+
+Detailed logs of the simulation, including:
+Resource allocation and releases.
+Deadlock detection and resolution events.
+Progress monitoring.
+
+
+Known Issues and Debugging
+If the simulation terminates prematurely, verify the resource allocation logic and the termination conditions in oss.c.
+Check the output.log file for detailed debug information.

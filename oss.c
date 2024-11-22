@@ -10,7 +10,7 @@
 static int clock_shmid;
 static int resource_shmid;
 static double end_time = 10.0;
-static int max_processes = 18;
+static int max_processes = 10;
 static double log_interval = 1.0;
 static char log_file[256] = "output.log";
 
