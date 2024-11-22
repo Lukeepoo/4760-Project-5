@@ -24,7 +24,10 @@ Optional arguments can be provided to customize the simulation:
 Example:
 
 ./oss -t 20.0 -n 10 -i 2.0 -l my_log.txt
+
+
 Key Features
+
 Simulated Clock:
 
 The program uses a shared memory clock that increments by 1 millisecond during each loop iteration.
